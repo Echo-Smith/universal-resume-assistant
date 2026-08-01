@@ -1,0 +1,4 @@
+interface:
+  display_name: "Universal Resume Assistant"
+  short_description: "Evidence-led resumes for any profession"
+  default_prompt: "Use $universal-resume-assistant to audit and tailor my resume without inventing claims or exposing sensitive data."
