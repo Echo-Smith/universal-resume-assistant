@@ -28,6 +28,8 @@ TEXT_SUFFIXES = {
 
 EXCLUDED_DIRS = {".git", "__pycache__", "node_modules"}
 
+URL_PATTERN = re.compile(r"https?://\S+")
+
 PATTERNS = {
     "email": re.compile(r"(?<![\w.+-])[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),
     "phone": re.compile(r"(?<!\w)(?:\+?\d[\d ().-]{7,}\d)(?!\w)"),
@@ -66,7 +68,10 @@ def scan_file(
     active_patterns = {**PATTERNS, **(extra_patterns or {})}
     for line_number, line in enumerate(lines, start=1):
         for kind, pattern in active_patterns.items():
-            for match in pattern.finditer(line):
+            # Dates and numeric path segments inside official URLs otherwise look
+            # like phone numbers. Other detectors still inspect the original line.
+            searchable_line = URL_PATTERN.sub("", line) if kind == "phone" else line
+            for match in pattern.finditer(searchable_line):
                 findings.append(
                     {
                         "file": str(path),
