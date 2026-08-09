@@ -1,6 +1,6 @@
 ---
 name: universal-resume-assistant
-description: Build, audit, tailor, benchmark, translate, organize, and deliver truthful resumes or CVs for any profession, seniority, industry, or career path, and help users accumulate defensible evidence while work is still in progress. Use when a user asks to analyze an existing resume, extract evidence from source material, compare a sample or market benchmark, match a job description, change careers, draft or revise resume content, improve achievements and metrics, distinguish an AI-built demo from a validated product loop, protect personal or confidential information, prepare ATS-readable documents, or keep Markdown, DOCX, HTML, and PDF versions consistent. Never invent experience, credentials, ownership, dates, keywords, or results.
+description: Build, audit, tailor, benchmark, translate, organize, and deliver truthful resumes or CVs for any profession, and assess job-post legitimacy, labor and hiring-compliance signals, recruitment scams, and risky personal-data requests. Use when a user asks to analyze a resume, extract evidence, compare a market sample, match or evaluate a job description, judge whether a recruiter or opportunity is credible and safe, change careers, draft resume content, improve achievements, distinguish an AI-built demo from a validated product loop, protect sensitive information, prepare ATS-readable documents, or keep Markdown, DOCX, HTML, and PDF versions consistent. Never invent experience, credentials, results, legal findings, or fraud claims.
 ---
 
 # Resume Evidence Copilot
@@ -19,6 +19,7 @@ Combine modes when needed and state any release blocker plainly.
 - **Discovery**: ask focused questions when the source material cannot support a credible draft.
 - **Accumulation**: record decisions, user evidence, outcomes, and unresolved questions while a project is active.
 - **Tailoring**: map a job description or target role to confirmed evidence.
+- **Opportunity risk**: separate role fit from labor compliance, source credibility, recruitment fraud, and personal-data risk.
 - **Benchmarking**: classify a sample's source and extract lessons without treating it as a universal market standard.
 - **Co-authoring**: draft or revise sections from verified or user-confirmed facts.
 - **Privacy**: redact or generalize personal, confidential, regulated, or security-sensitive data.
@@ -108,6 +109,8 @@ Apply these rules:
 
 After mapping, report evidence-backed fit, likely screening risk, the highest-value changes, and any answer that could materially change the conclusion.
 
+Whenever a JD or recruiter message is supplied, run a compact legitimacy and safety screen. If the text contains material warning signs or the user asks for a credibility or legal assessment, read [references/job-legitimacy-and-labor-risk.md](references/job-legitimacy-and-labor-risk.md), identify the jurisdiction and employment type, and verify current official sources. Grade labor/hiring, identity/credibility, and fraud/data risk separately. Do not infer illegality or fraud from high pay, vague wording, outsourcing status, or one missing field alone.
+
 Read [references/tailoring-and-writing.md](references/tailoring-and-writing.md) for profession-specific evidence lenses and writing patterns.
 
 ## 6. Reconstruct experience into defensible claims
@@ -182,6 +185,13 @@ Read [references/credibility-anti-patterns.md](references/credibility-anti-patte
 
 - Public or reusable files contain no personal contact details, secrets, hidden metadata, confidential identifiers, or real-person examples.
 - Redactions do not create misleading claims.
+
+### Opportunity-risk gate
+
+- Role fit and attractiveness are separate from legal, identity, fraud, and data-risk judgments.
+- Material conclusions distinguish observed text, corroborated facts, unknowns, inconsistencies, and official determinations.
+- Time-sensitive legal rules and company facts were checked against current official sources when the user requested a consequential assessment.
+- The response gives a safe next action without presenting decision support as legal advice or a guarantee.
 
 ### Delivery gate
 
