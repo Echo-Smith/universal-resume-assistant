@@ -1,10 +1,15 @@
-# Universal Resume Assistant Skill
+# Resume Evidence Copilot
 
 [中文](README.md)
 
-An evidence-led resume skill for auditing facts, judging role fit, reconstructing experience, tailoring content, and verifying multi-format delivery from a resume, project material, or job description.
+An evidence-led, privacy-first resume skill for auditing facts, judging role fit, reconstructing experience, tailoring content, and verifying multi-format delivery from a resume, project material, or job description.
+
+It does more than polish sentences. It separates verified facts from inference and missing proof, evaluates candidate competitiveness and role fit independently, and turns defensible evidence into language that can survive interview follow-up.
 
 It is designed for job seekers, career changers, students, independent professionals, and anyone who needs to accumulate defensible evidence or manage multiple resume versions.
+
+**Inputs:** resumes, job descriptions, project artifacts, performance summaries, interview notes, or public samples.
+**Outputs:** an evidence ledger, fit judgment, gap list, targeted resume, and consistency guidance for Markdown, DOCX, HTML, and PDF delivery.
 
 ## Features
 
