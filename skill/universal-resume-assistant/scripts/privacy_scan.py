@@ -26,6 +26,8 @@ TEXT_SUFFIXES = {
     ".yml",
 }
 
+EXCLUDED_DIRS = {".git", "__pycache__", "node_modules"}
+
 PATTERNS = {
     "email": re.compile(r"(?<![\w.+-])[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),
     "phone": re.compile(r"(?<!\w)(?:\+?\d[\d ().-]{7,}\d)(?!\w)"),
@@ -44,19 +46,26 @@ def iter_files(paths: list[Path]):
             continue
         if path.is_dir():
             for candidate in sorted(path.rglob("*")):
-                if candidate.is_file() and candidate.suffix.lower() in TEXT_SUFFIXES:
+                if (
+                    candidate.is_file()
+                    and candidate.suffix.lower() in TEXT_SUFFIXES
+                    and not EXCLUDED_DIRS.intersection(candidate.parts)
+                ):
                     yield candidate
 
 
-def scan_file(path: Path) -> list[dict[str, object]]:
+def scan_file(
+    path: Path, extra_patterns: dict[str, re.Pattern[str]] | None = None
+) -> list[dict[str, object]]:
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
     except (OSError, UnicodeDecodeError):
         return []
 
     findings: list[dict[str, object]] = []
+    active_patterns = {**PATTERNS, **(extra_patterns or {})}
     for line_number, line in enumerate(lines, start=1):
-        for kind, pattern in PATTERNS.items():
+        for kind, pattern in active_patterns.items():
             for match in pattern.finditer(line):
                 findings.append(
                     {
@@ -73,9 +82,30 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("paths", nargs="+", type=Path, help="Files or directories to scan")
     parser.add_argument("--json", action="store_true", help="Emit JSON")
+    parser.add_argument(
+        "--deny-term",
+        action="append",
+        default=[],
+        help="Literal personal or confidential term to flag; may be repeated",
+    )
+    parser.add_argument(
+        "--ignore-case",
+        action="store_true",
+        help="Match --deny-term values case-insensitively",
+    )
     args = parser.parse_args()
 
-    findings = [item for path in iter_files(args.paths) for item in scan_file(path)]
+    flags = re.IGNORECASE if args.ignore_case else 0
+    deny_patterns = {
+        f"deny_term:{term}": re.compile(re.escape(term), flags)
+        for term in args.deny_term
+        if term
+    }
+    findings = [
+        item
+        for path in iter_files(args.paths)
+        for item in scan_file(path, deny_patterns)
+    ]
     if args.json:
         print(json.dumps(findings, ensure_ascii=False, indent=2))
     else:

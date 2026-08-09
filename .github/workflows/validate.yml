@@ -1,0 +1,48 @@
+name: Validate skill
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile scripts
+        run: python -m py_compile skill/universal-resume-assistant/scripts/*.py
+      - name: Check skill structure and references
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          root = Path("skill/universal-resume-assistant")
+          skill = root / "SKILL.md"
+          text = skill.read_text(encoding="utf-8")
+          if not text.startswith("---\n"):
+              raise SystemExit("SKILL.md is missing YAML frontmatter")
+          frontmatter = text.split("---", 2)[1]
+          for key in ("name:", "description:"):
+              if key not in frontmatter:
+                  raise SystemExit(f"SKILL.md frontmatter is missing {key}")
+          for target in re.findall(r"\]\((references/[^)]+\.md)\)", text):
+              if not (root / target).is_file():
+                  raise SystemExit(f"Missing referenced file: {target}")
+          print("Skill structure and references are valid")
+          PY
+      - name: Run privacy scan
+        run: python skill/universal-resume-assistant/scripts/privacy_scan.py skill/universal-resume-assistant
+      - name: Reject packaging metadata
+        run: |
+          if find skill -name '.DS_Store' -o -name '._*' -o -name '__MACOSX' -o -name '__pycache__' | grep -q .; then
+            echo "Forbidden generated or operating-system metadata found"
+            exit 1
+          fi

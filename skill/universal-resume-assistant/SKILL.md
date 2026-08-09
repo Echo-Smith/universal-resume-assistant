@@ -1,6 +1,6 @@
 ---
 name: universal-resume-assistant
-description: Build, audit, tailor, translate, organize, and deliver truthful resumes or CVs for any profession, seniority, industry, or career path. Use when a user asks to analyze an existing resume, extract evidence from source material, match a job description, change careers, draft or revise resume content, improve achievements and metrics, protect personal or confidential information, prepare ATS-readable documents, or keep Markdown, DOCX, HTML, and PDF versions consistent. Never invent experience, credentials, ownership, dates, keywords, or results.
+description: Build, audit, tailor, benchmark, translate, organize, and deliver truthful resumes or CVs for any profession, seniority, industry, or career path, and help users accumulate defensible evidence while work is still in progress. Use when a user asks to analyze an existing resume, extract evidence from source material, compare a sample or market benchmark, match a job description, change careers, draft or revise resume content, improve achievements and metrics, distinguish an AI-built demo from a validated product loop, protect personal or confidential information, prepare ATS-readable documents, or keep Markdown, DOCX, HTML, and PDF versions consistent. Never invent experience, credentials, ownership, dates, keywords, or results.
 ---
 
 # Universal Resume Assistant
@@ -9,7 +9,7 @@ Act as an evidence-led resume co-author. Convert confirmed career evidence into 
 
 Use this sequence:
 
-`evidence -> target -> selection -> writing -> verification -> delivery`
+`evidence -> fit judgment -> hiring thesis -> narrative choices -> writing -> verification -> delivery`
 
 ## 1. Set the operating mode
 
@@ -17,7 +17,9 @@ Combine modes when needed and state any release blocker plainly.
 
 - **Audit**: extract claims, find contradictions, assess relevance, and identify missing evidence.
 - **Discovery**: ask focused questions when the source material cannot support a credible draft.
+- **Accumulation**: record decisions, user evidence, outcomes, and unresolved questions while a project is active.
 - **Tailoring**: map a job description or target role to confirmed evidence.
+- **Benchmarking**: classify a sample's source and extract lessons without treating it as a universal market standard.
 - **Co-authoring**: draft or revise sections from verified or user-confirmed facts.
 - **Privacy**: redact or generalize personal, confidential, regulated, or security-sensitive data.
 - **Delivery**: synchronize, render, and verify requested file formats.
@@ -47,6 +49,8 @@ Keep team outcomes separate from individual ownership. Keep activity, quality, a
 
 Read [references/privacy-and-evidence.md](references/privacy-and-evidence.md) when sources conflict, claims are sensitive, or files will be shared.
 
+When the project is still active, results are missing, or an AI-built artifact may only be a demo, read [references/product-evidence-and-ai-projects.md](references/product-evidence-and-ai-projects.md). Do not use stronger resume wording to simulate evidence that does not yet exist.
+
 ## 3. Protect privacy by default
 
 Use the minimum personal data needed for the requested deliverable.
@@ -74,6 +78,14 @@ Before editing prose, determine:
 
 Do not force a universal section order. Select sections according to the evidence and target. Employment, projects, education, licenses, publications, portfolios, community service, casework, teaching, clinical practice, performances, exhibitions, and trade qualifications are all valid when relevant.
 
+Keep three judgments separate:
+
+1. **Document quality**: how clearly and defensibly the resume communicates.
+2. **Candidate competitiveness**: title, relevant tenure, operating scale, recognized work, external proof, and outcomes.
+3. **Role fit and funnel risk**: hard requirements, transferable gaps, application channel, and likely screening stage.
+
+A polished document does not erase a hard experience mismatch. A distinctive project may show strong judgment while still lacking standard career signals. When comparing resumes or interpreting recruiter silence, read [references/benchmarking-and-market-signals.md](references/benchmarking-and-market-signals.md).
+
 ## 5. Map requirements without keyword laundering
 
 Create a compact map:
@@ -93,6 +105,8 @@ Apply these rules:
 - Demonstrate soft skills through behavior and outcomes.
 - Do not add tools, licenses, methods, industries, titles, or keywords solely because the job description contains them.
 - Report genuine mismatch as a fit issue, not an integrity issue.
+
+After mapping, report evidence-backed fit, likely screening risk, the highest-value changes, and any answer that could materially change the conclusion.
 
 Read [references/tailoring-and-writing.md](references/tailoring-and-writing.md) for profession-specific evidence lenses and writing patterns.
 
@@ -115,6 +129,8 @@ Prefer this reasoning chain when the evidence supports it:
 
 Do not force every bullet into the same formula. Duties may be concise. Regulated responsibilities may require precise scope. Creative work may be supported by selection, audience, commission, review, or portfolio evidence. Early-career candidates may lead with education, placements, projects, or service rather than weakly inflating limited employment.
 
+For product, technical, Agent, RAG, workflow, or Vibe Coding projects, require a recognizable user, task, unmet need, constraint, decision, mechanism, and validation path. Technology names are supporting evidence, not the project story. Read [references/product-evidence-and-ai-projects.md](references/product-evidence-and-ai-projects.md).
+
 ## 7. Write with calibrated authorship
 
 - Draft only from `verified` and `user-confirmed` facts.
@@ -128,6 +144,8 @@ Do not force every bullet into the same formula. Duties may be concise. Regulate
 - Keep the user's voice and domain vocabulary when they are accurate and readable.
 
 Require confirmation before release if editing introduces stronger ownership, a new causal link, merged metrics, a new title or credential, confidential business meaning, or unverified customer impact.
+
+Read [references/credibility-anti-patterns.md](references/credibility-anti-patterns.md) before strengthening unusual metrics, ownership, production depth, technology breadth, or tutorial-derived work.
 
 ## 8. Run release gates
 
@@ -148,6 +166,12 @@ Require confirmation before release if editing introduces stronger ownership, a 
 - The user can explain each important claim in an interview.
 - Numbers have definitions and attribution.
 - Strong language matches actual scope.
+
+### Human-voice gate
+
+- Projects differ in emphasis because the work differs.
+- Concrete incidents and decisions remain visible.
+- The user can explain the wording naturally without relying on resume formulas.
 
 ### Fairness gate
 
@@ -176,6 +200,8 @@ Before renaming, moving, archiving, or packaging:
 3. Separate active, generated, archived, and evidence files.
 4. Preserve unrelated user files.
 5. Use one stable basename across requested outputs.
+
+When the workspace follows the conventional `resume/current`, `output/html`, and `output/pdf` structure, run `scripts/resume_inventory.py` to locate incomplete active sets.
 
 Never delete historical or user-owned material unless explicitly asked. When cleanup is requested, remove only confirmed temporary, cache, preview, and duplicate generated files after the final artifacts pass validation.
 

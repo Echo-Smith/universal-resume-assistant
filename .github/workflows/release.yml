@@ -1,0 +1,28 @@
+name: Publish release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build clean skill archive
+        run: |
+          archive="universal-resume-assistant-${GITHUB_REF_NAME}.zip"
+          zip -r -X "$archive" skill/universal-resume-assistant \
+            -x '*/.DS_Store' '*/._*' '*/__MACOSX/*' '*/.git/*' '*/__pycache__/*'
+          unzip -t "$archive"
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          archive="universal-resume-assistant-${GITHUB_REF_NAME}.zip"
+          gh release create "$GITHUB_REF_NAME" "$archive" \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes

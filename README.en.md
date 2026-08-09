@@ -2,11 +2,19 @@
 
 [中文](README.md)
 
+An evidence-led resume skill for auditing facts, judging role fit, reconstructing experience, tailoring content, and verifying multi-format delivery from a resume, project material, or job description.
+
+It is designed for job seekers, career changers, students, independent professionals, and anyone who needs to accumulate defensible evidence or manage multiple resume versions.
+
 ## Features
 
 - Supports resumes and CVs for any profession, industry, seniority, or career transition.
 - Audits existing resumes by separating facts, responsibilities, actions, outcomes, metrics, and evidence sources.
 - Maps job requirements to `strong`, `partial`, `missing`, or `irrelevant` evidence without keyword laundering or fabricated experience.
+- Separates document quality, candidate competitiveness, and role-specific fit instead of hiding hard gaps behind one score.
+- Accumulates decisions, user feedback, and outcome evidence while projects are active, distinguishing delivery, usage, repeat behavior, user outcomes, and business outcomes.
+- Tests whether AI, Agent, and Vibe Coding work has a real user, priority, scope decision, validation path, and evidence-led iteration rather than only a technology stack.
+- Classifies public resumes, tutorial projects, career articles, and market samples before extracting transferable lessons.
 - Co-authors, condenses, restructures, and translates content from verified or user-confirmed facts.
 - Separates individual contribution from team results and checks dates, seniority, credentials, metric definitions, and causal claims.
 - Synchronizes content and release checks across Markdown, DOCX, HTML, PDF, and other requested formats.
@@ -17,12 +25,13 @@
 
 The skill uses a traceable evidence chain:
 
-`evidence -> target -> selection -> writing -> verification -> delivery`
+`evidence -> fit judgment -> hiring thesis -> narrative choices -> writing -> verification -> delivery`
 
 | Principle | Implementation |
 |---|---|
 | Facts first | Classify claims as `verified`, `user-confirmed`, `inferred`, `missing`, or `contradictory` |
 | Role relevance | Map requirements to evidence and rank by relevance, evidence strength, distinctiveness, and recency |
+| Three-layer judgment | Separate document quality, candidate competitiveness, and role fit or funnel risk |
 | Profession neutral | Use different evidence lenses for operations, sales, education, healthcare, technology, research, creative work, public service, skilled trades, and more |
 | Accurate attribution | Separate personal responsibility, team outcomes, organizational impact, and causality |
 | Interview defensibility | Require important claims to have explainable scope, method, result, and support |
@@ -54,6 +63,14 @@ Use $universal-resume-assistant to tailor my experience to this job description 
 Use $universal-resume-assistant to create Chinese and English versions and verify that facts, seniority, and metrics remain identical.
 ```
 
+```text
+Use $universal-resume-assistant to determine whether this AI project is a demo, early product, or validated product loop, then identify the next evidence to collect.
+```
+
+```text
+Use $universal-resume-assistant to compare this public resume with my profile, separating document quality, candidate signals, and role fit.
+```
+
 ## Structure
 
 ```text
@@ -63,8 +80,13 @@ skill/universal-resume-assistant/
 ├── references/
 │   ├── privacy-and-evidence.md
 │   ├── quality-and-delivery.md
-│   └── tailoring-and-writing.md
-└── scripts/privacy_scan.py
+│   ├── tailoring-and-writing.md
+│   ├── product-evidence-and-ai-projects.md
+│   ├── benchmarking-and-market-signals.md
+│   └── credibility-anti-patterns.md
+└── scripts/
+    ├── privacy_scan.py
+    └── resume_inventory.py
 ```
 
 ## Validation
@@ -79,6 +101,14 @@ Scan text files before public sharing:
 
 ```bash
 python3 skill/universal-resume-assistant/scripts/privacy_scan.py path/to/resume-or-folder
+```
+
+Repeat `--deny-term` to flag known names, project identifiers, or personal domains that may enable re-identification:
+
+```bash
+python3 skill/universal-resume-assistant/scripts/privacy_scan.py public-folder \
+  --deny-term "[Real Name]" \
+  --deny-term "[Internal Project]"
 ```
 
 The scanner supports human review; it is not a compliance, legal, or security certification.
