@@ -8,6 +8,7 @@ Use this reference when a project is still active, the resume lacks outcomes, an
 - Outcome ladder
 - AI and Vibe Coding completeness check
 - Product and architecture narrative
+- Product clarity and version discipline
 - Product judgment signals
 - Bounded evidence plan
 
@@ -78,6 +79,18 @@ Use the reasoning chain:
 `specific need -> observed failure -> decision -> mechanism -> validation`
 
 Do not lead with a component inventory such as Agent, RAG, memory, tools, workflow, or model names. Connect each retained mechanism to a real constraint. A rejected option is useful only when it was actually tried or seriously considered and the tradeoff is concrete.
+
+Run [product-clarity-gate.md](product-clarity-gate.md) before release. After the title and first bullet, a non-technical reviewer must be able to identify the user, task, concrete functions, and strongest evidence. Temporarily remove architecture names; if the product becomes unintelligible, reconstruct the section before restoring only necessary terms.
+
+## Product clarity and version discipline
+
+Prefer this information order:
+
+`user and task -> concrete functions -> why the mechanism was necessary -> feedback-driven change -> highest defensible result`
+
+Do not use V1 / V2 / V3 as the default project spine. Keep release labels in evidence records unless a real observed failure caused a materially different product decision. Write the changed behavior directly whenever possible.
+
+For safety work, define the dangerous input and exact product response before mentioning internal severity codes. For outcome selection, lead with business or user outcomes and repeat behavior before larger exposure or experience counts.
 
 Use one dominant role lane:
 

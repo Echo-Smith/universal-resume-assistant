@@ -9,7 +9,7 @@ It does more than polish sentences. It separates verified facts from inference a
 It is designed for job seekers, career changers, students, independent professionals, and anyone who needs to accumulate defensible evidence or manage multiple resume versions.
 
 **Inputs:** resumes, job descriptions, project artifacts, performance summaries, interview notes, or public samples.
-**Outputs:** an evidence ledger, fit judgment, gap list, targeted resume, and consistency guidance for Markdown, DOCX, HTML, and PDF delivery.
+**Outputs:** an evidence ledger, fit judgment, gap list, targeted resume, and consistency guidance for Markdown, plain text, DOCX, HTML, and PDF delivery.
 
 ## Features
 
@@ -21,6 +21,7 @@ It is designed for job seekers, career changers, students, independent professio
 - Adds a mainland-China baseline and official verification paths while avoiding unsupported legal or fraud findings.
 - Accumulates decisions, user feedback, and outcome evidence while projects are active, distinguishing delivery, usage, repeat behavior, user outcomes, and business outcomes.
 - Tests whether AI, Agent, and Vibe Coding work has a real user, priority, scope decision, validation path, and evidence-led iteration rather than only a technology stack.
+- Adds a product-clarity gate that requires the user, task, concrete functions, and strongest evidence to appear before architecture; version labels do not become the default narrative spine.
 - Classifies public resumes, tutorial projects, career articles, and market samples before extracting transferable lessons.
 - Co-authors, condenses, restructures, and translates content from verified or user-confirmed facts.
 - Separates individual contribution from team results and checks dates, seniority, credentials, metric definitions, and causal claims.
@@ -94,6 +95,7 @@ skill/universal-resume-assistant/
 │   ├── quality-and-delivery.md
 │   ├── tailoring-and-writing.md
 │   ├── product-evidence-and-ai-projects.md
+│   ├── product-clarity-gate.md
 │   ├── benchmarking-and-market-signals.md
 │   ├── credibility-anti-patterns.md
 │   └── job-legitimacy-and-labor-risk.md

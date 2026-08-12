@@ -1,6 +1,6 @@
 ---
 name: universal-resume-assistant
-description: Build, audit, tailor, benchmark, translate, organize, and deliver truthful resumes or CVs for any profession, and assess job-post legitimacy, labor and hiring-compliance signals, recruitment scams, and risky personal-data requests. Use when a user asks to analyze a resume, extract evidence, compare a market sample, match or evaluate a job description, judge whether a recruiter or opportunity is credible and safe, change careers, draft resume content, improve achievements, distinguish an AI-built demo from a validated product loop, protect sensitive information, prepare ATS-readable documents, or keep Markdown, DOCX, HTML, and PDF versions consistent. Never invent experience, credentials, results, legal findings, or fraud claims.
+description: Build, audit, tailor, benchmark, translate, organize, and deliver truthful resumes or CVs for any profession, and assess job-post legitimacy, labor and hiring-compliance signals, recruitment scams, and risky personal-data requests. Use when a user asks to analyze a resume, extract evidence, compare a market sample, match or evaluate a job description, judge whether a recruiter or opportunity is credible and safe, change careers, draft resume content, improve achievements, distinguish an AI-built demo from a validated product loop, protect sensitive information, prepare ATS-readable documents, or keep Markdown, plain-text, DOCX, HTML, and PDF versions consistent. Never invent experience, credentials, results, legal findings, or fraud claims.
 ---
 
 # Resume Evidence Copilot
@@ -134,6 +134,8 @@ Do not force every bullet into the same formula. Duties may be concise. Regulate
 
 For product, technical, Agent, RAG, workflow, or Vibe Coding projects, require a recognizable user, task, unmet need, constraint, decision, mechanism, and validation path. Technology names are supporting evidence, not the project story. Read [references/product-evidence-and-ai-projects.md](references/product-evidence-and-ai-projects.md).
 
+For product and AI-product roles, also run [references/product-clarity-gate.md](references/product-clarity-gate.md). This is mandatory when the draft uses version labels as the story, leads with architecture, exposes internal risk levels without definitions, or receives feedback that it reads like development work.
+
 ## 7. Write with calibrated authorship
 
 - Draft only from `verified` and `user-confirmed` facts.
@@ -176,6 +178,14 @@ Read [references/credibility-anti-patterns.md](references/credibility-anti-patte
 - Concrete incidents and decisions remain visible.
 - The user can explain the wording naturally without relying on resume formulas.
 
+### Product-clarity gate
+
+- A non-technical reviewer can identify the user, task, concrete product behavior, and strongest result from the project opening.
+- Removing framework names does not make the product disappear.
+- Every retained technical mechanism answers a stated failure, constraint, safety need, cost, or reliability problem.
+- Version labels remain subordinate to evidence-led product decisions.
+- Safety strategy defines risky inputs and exact system behavior before internal severity codes.
+
 ### Fairness gate
 
 - Advice does not infer ability or integrity from protected characteristics, name, photo, age, address, school prestige, employment gaps, or email provider.
@@ -211,7 +221,7 @@ Before renaming, moving, archiving, or packaging:
 4. Preserve unrelated user files.
 5. Use one stable basename across requested outputs.
 
-When the workspace follows the conventional `resume/current`, `output/html`, and `output/pdf` structure, run `scripts/resume_inventory.py` to locate incomplete active sets.
+When the workspace follows the conventional `resume/current`, `output/txt`, `output/html`, and `output/pdf` structure, run `scripts/resume_inventory.py` to locate incomplete active sets.
 
 Never delete historical or user-owned material unless explicitly asked. When cleanup is requested, remove only confirmed temporary, cache, preview, and duplicate generated files after the final artifacts pass validation.
 

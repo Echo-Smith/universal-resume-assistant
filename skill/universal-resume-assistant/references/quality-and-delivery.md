@@ -31,6 +31,7 @@ Treat the score as a diagnostic, not a hiring prediction. A zero in truthfulness
 6. Verify chronology, employment type, concurrent work, and planned versus completed activity.
 7. Generate interview questions for the strongest claims; qualify any claim the user cannot defend.
 8. Run the privacy review after content is final.
+9. Remove framework names temporarily; if the user, task, product behavior, and result disappear, fail the product-clarity gate.
 
 ## ATS and accessibility
 
@@ -46,7 +47,7 @@ Treat the score as a diagnostic, not a hiring prediction. A zero in truthfulness
 
 Choose one active text source and one shared basename. After any factual correction, update every active format.
 
-For Markdown, DOCX, HTML, and PDF outputs, verify:
+For Markdown, plain text, DOCX, HTML, and PDF outputs, verify:
 
 - name, target, dates, titles, facts, and links match;
 - headings and bullets do not split awkwardly;

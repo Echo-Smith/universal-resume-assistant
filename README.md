@@ -9,7 +9,7 @@
 适合求职者、转岗人群、在校生、自由职业者，以及需要梳理职业证据、验证项目成熟度或管理多版本简历的人。
 
 **输入**：现有简历、JD、项目材料、年度总结、访谈记录或公开样本。
-**输出**：证据账本、匹配判断、缺口清单、定向简历，以及 Markdown / DOCX / HTML / PDF 的一致性交付建议。
+**输出**：证据账本、匹配判断、缺口清单、定向简历，以及 Markdown / 纯文本 / DOCX / HTML / PDF 的一致性交付建议。
 
 ## 功能
 
@@ -21,6 +21,7 @@
 - 对中国大陆岗位补充基础劳动用工常识与官方核验路径；只提供分级风险和核查动作，不凭措辞直接判定企业违法或诈骗。
 - 支持在项目进行中积累决策、用户反馈和结果证据，区分功能完成、使用规模、重复行为、用户结果和业务结果。
 - 检查 AI / Agent / Vibe Coding 项目是否具备真实用户、优先级、范围取舍、验证和迭代，而非只罗列技术栈。
+- 新增“产品可读性闸门”：先识别用户、任务、具体功能和最高证据，再检查每个技术机制是否回应真实约束；默认不以 V1 / V2 作为项目主线。
 - 对公开简历、教程项目、职业文章和市场样本先判断来源性质，再提炼可迁移经验。
 - 基于已验证或用户确认的事实协作撰写、压缩、重组和翻译内容。
 - 区分个人贡献与团队成果，校验日期、职级、证书、指标口径与因果关系。
@@ -94,6 +95,7 @@ skill/universal-resume-assistant/
 │   ├── quality-and-delivery.md
 │   ├── tailoring-and-writing.md
 │   ├── product-evidence-and-ai-projects.md
+│   ├── product-clarity-gate.md
 │   ├── benchmarking-and-market-signals.md
 │   ├── credibility-anti-patterns.md
 │   └── job-legitimacy-and-labor-risk.md
