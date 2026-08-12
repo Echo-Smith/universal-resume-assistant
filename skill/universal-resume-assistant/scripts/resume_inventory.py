@@ -17,9 +17,15 @@ DEFAULT_LOCATIONS = {
 
 def semantic_key(path: Path) -> str:
     stem = path.stem
-    for suffix in ("-文字稿", "-定向简历", "-通用简历"):
-        if stem.endswith(suffix):
-            return stem[: -len(suffix)]
+    suffixes = ("-文字稿", "-定向简历", "-通用简历")
+    changed = True
+    while changed:
+        changed = False
+        for suffix in suffixes:
+            if stem.endswith(suffix):
+                stem = stem[: -len(suffix)]
+                changed = True
+                break
     return stem
 
 
