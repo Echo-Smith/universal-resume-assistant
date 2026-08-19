@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Resume Assistant"
+  short_description: "Evidence-led resumes, role fit, and job-risk checks"
+  default_prompt: "Use $ai-resume-assistant to evaluate this opportunity's fit, legitimacy, labor and data risks, then build an evidence-backed targeted resume without inventing facts or legal findings."

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Inventory active resume sources and generated outputs."""
+"""Inventory active resume sources and generated outputs.
+
+Run from the workspace root:
+    python skills/ai-resume-assistant/scripts/resume_inventory.py
+"""
 
 from __future__ import annotations
 
@@ -52,12 +56,9 @@ def main() -> int:
     root = args.root.resolve()
 
     files = {
-        kind: collect(root, path, extension)
-        for kind, path, extension in (
-            ("text", DEFAULT_LOCATIONS["text"], ".md"),
-            ("html", DEFAULT_LOCATIONS["html"], ".html"),
-            ("pdf", DEFAULT_LOCATIONS["pdf"], ".pdf"),
-        )
+        "text": collect(root, DEFAULT_LOCATIONS["text"], ".md"),
+        "html": collect(root, DEFAULT_LOCATIONS["html"], ".html"),
+        "pdf": collect(root, DEFAULT_LOCATIONS["pdf"], ".pdf"),
     }
 
     grouped: dict[str, dict[str, list[Path]]] = defaultdict(
@@ -76,20 +77,23 @@ def main() -> int:
         print(key)
         for kind in ("text", "html", "pdf"):
             paths = grouped[key].get(kind, [])
+            label = kind.upper()
             if paths:
                 for path in paths:
-                    print(f"  {kind.upper()}: {path}")
+                    print(f"  {label}: {path}")
             else:
-                print(f"  {kind.upper()}: MISSING")
+                print(f"  {label}: MISSING")
                 incomplete = True
         print()
 
     if not grouped:
         print("No active resume assets found in the default locations.")
         return 1
+
     if incomplete:
         print("Status: active asset set is incomplete.")
         return 2
+
     print("Status: every target has text, HTML, and PDF assets.")
     return 0
 

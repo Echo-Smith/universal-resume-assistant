@@ -1,4 +1,0 @@
-interface:
-  display_name: "Resume Evidence Copilot"
-  short_description: "Evidence-led resumes, role fit, and job-risk checks"
-  default_prompt: "Use $universal-resume-assistant to assess this opportunity's fit, legitimacy, labor and data risks, then build a truthful targeted resume without exposing sensitive information."

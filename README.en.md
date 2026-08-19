@@ -1,106 +1,74 @@
-# Resume Evidence Copilot
+# AI Resume Assistant
 
-[中文](README.md)
+A Codex skill that turns real, verified experience into Chinese or English resumes that survive interview follow-up. It is not a sentence-polisher: it separates facts, inference, and missing proof, judges fit against the target role, and only then rewrites the resume. It never fabricates experience, metrics, or conclusions.
 
-An evidence-led, privacy-first resume skill for auditing facts, judging role fit, screening job-post legitimacy and recruitment risk, reconstructing experience, tailoring content, and verifying multi-format delivery.
+## What it does
 
-It does more than polish sentences. It separates verified facts from inference and missing proof, evaluates candidate competitiveness and role fit independently, and turns defensible evidence into language that can survive interview follow-up.
-
-It is designed for job seekers, career changers, students, independent professionals, and anyone who needs to accumulate defensible evidence or manage multiple resume versions.
-
-**Inputs:** resumes, job descriptions, project artifacts, performance summaries, interview notes, or public samples.
-**Outputs:** an evidence ledger, fit judgment, gap list, targeted resume, and consistency guidance for Markdown, plain text, DOCX, HTML, and PDF delivery.
-
-## Features
-
-- Supports resumes and CVs for any profession, industry, seniority, or career transition.
-- Audits existing resumes by separating facts, responsibilities, actions, outcomes, metrics, and evidence sources.
-- Maps job requirements to `strong`, `partial`, `missing`, or `irrelevant` evidence without keyword laundering or fabricated experience.
-- Separates document quality, candidate competitiveness, and role-specific fit instead of hiding hard gaps behind one score.
-- Separates role fit from labor and hiring compliance, source credibility, recruitment fraud, and personal-data risk.
-- Adds a mainland-China baseline and official verification paths while avoiding unsupported legal or fraud findings.
-- Accumulates decisions, user feedback, and outcome evidence while projects are active, distinguishing delivery, usage, repeat behavior, user outcomes, and business outcomes.
-- Tests whether AI, Agent, and Vibe Coding work has a real user, priority, scope decision, validation path, and evidence-led iteration rather than only a technology stack.
-- Adds a product-clarity gate that requires the user, task, concrete functions, and strongest evidence to appear before architecture; version labels do not become the default narrative spine.
-- Classifies public resumes, tutorial projects, career articles, and market samples before extracting transferable lessons.
-- Co-authors, condenses, restructures, and translates content from verified or user-confirmed facts.
-- Separates individual contribution from team results and checks dates, seniority, credentials, metric definitions, and causal claims.
-- Synchronizes content and release checks across Markdown, DOCX, HTML, PDF, and other requested formats.
-- Minimizes personal data by default; public files exclude contact details, real-person examples, secrets, internal identifiers, and confidential data.
-- Includes a local privacy scanner for likely emails, phone numbers, absolute home paths, private keys, and common secret fields.
-
-## Method
-
-The skill uses a traceable evidence chain:
-
-`evidence -> fit judgment -> hiring thesis -> narrative choices -> writing -> verification -> delivery`
-
-| Principle | Implementation |
-|---|---|
-| Facts first | Classify claims as `verified`, `user-confirmed`, `inferred`, `missing`, or `contradictory` |
-| Role relevance | Map requirements to evidence and rank by relevance, evidence strength, distinctiveness, and recency |
-| Three-layer judgment | Separate document quality, candidate competitiveness, and role fit or funnel risk |
-| Opportunity risk | Separate labor compliance, source credibility, fraud, and personal-data risk, with evidence and next checks |
-| Profession neutral | Use different evidence lenses for operations, sales, education, healthcare, technology, research, creative work, public service, skilled trades, and more |
-| Accurate attribution | Separate personal responsibility, team outcomes, organizational impact, and causality |
-| Interview defensibility | Require important claims to have explainable scope, method, result, and support |
-| Fair review | Do not infer ability or integrity from names, photos, age, address, school prestige, family status, or other protected traits and proxies |
-| Privacy by default | Minimize and anonymize data, check re-identification risk, inspect archive manifests, and scan before release |
-| Consistent delivery | Maintain one factual source and verify content, links, selectable text, reading order, and hidden metadata across formats |
+- **Resume audit**: decomposes a resume into facts, responsibilities, actions, outcomes, metrics, and evidence sources, and flags what is usable, unconfirmed, or contradictory.
+- **JD matching**: maps each requirement to real evidence (`strong` / `partial` / `missing` / `irrelevant`) without keyword laundering or invented experience.
+- **Capability portrait and evidence mapping**: decomposes role JDs such as AI product manager into capability layers (model/AI systems, agent mechanics, data and evaluation, product loop, collaboration, business scenarios, continuous learning), checks evidence per layer, and separates what can be written now, what is in progress, and what remains a future goal.
+- **In-progress work and future-goal management**: work still in progress may be discussed but never written as a completed result; future goals stay out of the resume. Directional benchmark results are not written before the benchmark is frozen.
+- **Productizing operations/content experience**: turns repeated labor, process improvement, and observable outcomes into transferable product evidence without title laundering.
+- **Job legitimacy and risk screening**: keeps role fit separate from employer credibility, labor compliance, fraud signals, and personal-data risk, and gives a bounded verification checklist rather than unsupported verdicts.
+- **One-page A4 layout**: targets exactly one A4 page; compresses wording, hierarchy, and spacing before reducing type size, and widens line/letter spacing instead of adding filler when the page is short.
+- **Multi-format delivery**: keeps Markdown, plain text, HTML, and PDF consistent, and verifies links, page count, selectable text, print colors, and reading order.
 
 ## Installation
 
-Copy `skill/universal-resume-assistant` into the Codex skills directory:
-
 ```bash
-cp -R skill/universal-resume-assistant "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skill/ai-resume-assistant "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
-Restart or refresh Codex so it can discover the skill.
+Restart or refresh Codex to discover the skill.
 
 ## Usage
 
 ```text
-Use $universal-resume-assistant to audit this resume, list evidence gaps and privacy risks, and then produce a revision.
+Use $ai-resume-assistant to audit this resume, list evidence gaps and privacy risks, and then produce a revision.
 ```
 
 ```text
-Use $universal-resume-assistant to tailor my experience to this job description without adding unverified experience.
+Use $ai-resume-assistant to tailor my experience to this job description without adding unverified experience.
 ```
 
 ```text
-Use $universal-resume-assistant to assess this role's fit, recruiter credibility, labor terms, and personal-data risks before I apply.
+Use $ai-resume-assistant to assess this role's fit, recruiter credibility, labor terms, and personal-data risks before I apply.
 ```
 
 ```text
-Use $universal-resume-assistant to create Chinese and English versions and verify that facts, seniority, and metrics remain identical.
+Use $ai-resume-assistant to create Chinese and English versions and verify that facts, seniority, and metrics remain identical.
 ```
 
 ```text
-Use $universal-resume-assistant to determine whether this AI project is a demo, early product, or validated product loop, then identify the next evidence to collect.
+Use $ai-resume-assistant to determine whether this AI project is a demo, early product, or validated product loop, then identify the next evidence to collect.
 ```
 
 ```text
-Use $universal-resume-assistant to compare this public resume with my profile, separating document quality, candidate signals, and role fit.
+Use $ai-resume-assistant to compare this public resume with my profile, separating document quality, candidate signals, and role fit.
 ```
 
 ## Structure
 
 ```text
-skill/universal-resume-assistant/
+skill/ai-resume-assistant/
 ├── SKILL.md
 ├── agents/openai.yaml
 ├── references/
-│   ├── privacy-and-evidence.md
-│   ├── quality-and-delivery.md
-│   ├── tailoring-and-writing.md
-│   ├── product-evidence-and-ai-projects.md
+│   ├── anti-patterns.md
+│   ├── asset-management.md
+│   ├── capability-portrait-evidence-mapping.md
+│   ├── commercial-product-thinking.md
+│   ├── delivery-checklist.md
+│   ├── job-legitimacy-and-labor-risk.md
+│   ├── market-signals-and-benchmarking.md
+│   ├── operational-work-to-product-evidence.md
 │   ├── product-clarity-gate.md
-│   ├── benchmarking-and-market-signals.md
-│   ├── credibility-anti-patterns.md
-│   └── job-legitimacy-and-labor-risk.md
+│   ├── product-evidence-accumulation.md
+│   ├── project-narrative.md
+│   ├── quality-rubric.md
+│   ├── reconstruction-and-voice.md
+│   └── writing-patterns.md
 └── scripts/
-    ├── privacy_scan.py
     └── resume_inventory.py
 ```
 
@@ -109,24 +77,14 @@ skill/universal-resume-assistant/
 Validate the skill structure:
 
 ```bash
-python3 /path/to/skill-creator/scripts/quick_validate.py skill/universal-resume-assistant
+python3 /path/to/skill-creator/scripts/quick_validate.py skill/ai-resume-assistant
 ```
 
-Scan text files before public sharing:
+Inventory resume sources and generated outputs:
 
 ```bash
-python3 skill/universal-resume-assistant/scripts/privacy_scan.py path/to/resume-or-folder
+python3 skill/ai-resume-assistant/scripts/resume_inventory.py
 ```
-
-Repeat `--deny-term` to flag known names, project identifiers, or personal domains that may enable re-identification:
-
-```bash
-python3 skill/universal-resume-assistant/scripts/privacy_scan.py public-folder \
-  --deny-term "[Real Name]" \
-  --deny-term "[Internal Project]"
-```
-
-The scanner supports human review; it is not a compliance, legal, or security certification.
 
 ## License
 

@@ -14,15 +14,15 @@ jobs:
       - uses: actions/checkout@v6
       - name: Build clean skill archive
         run: |
-          archive="universal-resume-assistant-${GITHUB_REF_NAME}.zip"
-          zip -r -X "$archive" skill/universal-resume-assistant \
+          archive="ai-resume-assistant-${GITHUB_REF_NAME}.zip"
+          zip -r -X "$archive" skill/ai-resume-assistant \
             -x '*/.DS_Store' '*/._*' '*/__MACOSX/*' '*/.git/*' '*/__pycache__/*'
           unzip -t "$archive"
       - name: Create or update GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          archive="universal-resume-assistant-${GITHUB_REF_NAME}.zip"
+          archive="ai-resume-assistant-${GITHUB_REF_NAME}.zip"
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
             gh release upload "$GITHUB_REF_NAME" "$archive" --clobber
           else

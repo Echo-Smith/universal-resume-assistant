@@ -18,15 +18,15 @@ jobs:
           python-version: "3.12"
       - name: Compile scripts
         env:
-          PYTHONPYCACHEPREFIX: /tmp/universal-resume-assistant-pyc
-        run: python -m py_compile skill/universal-resume-assistant/scripts/*.py
+          PYTHONPYCACHEPREFIX: /tmp/ai-resume-assistant-pyc
+        run: python -m py_compile skill/ai-resume-assistant/scripts/*.py
       - name: Check skill structure and references
         run: |
           python - <<'PY'
           import re
           from pathlib import Path
 
-          root = Path("skill/universal-resume-assistant")
+          root = Path("skill/ai-resume-assistant")
           skill = root / "SKILL.md"
           text = skill.read_text(encoding="utf-8")
           if not text.startswith("---\n"):
@@ -40,8 +40,30 @@ jobs:
                   raise SystemExit(f"Missing referenced file: {target}")
           print("Skill structure and references are valid")
           PY
-      - name: Run privacy scan
-        run: python skill/universal-resume-assistant/scripts/privacy_scan.py skill/universal-resume-assistant
+      - name: Scan for obvious personal data
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          root = Path("skill/ai-resume-assistant")
+          patterns = {
+              "email": re.compile(r"(?<![\w.+-])[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),
+              "home_path": re.compile(r"(?:/Users/|/home/)[^\s\"']+"),
+          }
+          findings = []
+          for path in root.rglob("*"):
+              if not path.is_file() or path.suffix not in {".md", ".yaml", ".py"}:
+                  continue
+              for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                  for kind, pattern in patterns.items():
+                      for match in pattern.finditer(line):
+                          findings.append(f"{path}:{i}: {kind}: {match.group(0)}")
+          if findings:
+              print("\n".join(findings))
+              raise SystemExit(1)
+          print("No obvious personal data found in skill files")
+          PY
       - name: Reject packaging metadata
         run: |
           if find skill -name '.DS_Store' -o -name '._*' -o -name '__MACOSX' -o -name '__pycache__' | grep -q .; then
